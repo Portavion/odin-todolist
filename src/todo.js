@@ -6,6 +6,7 @@ class TodoItem {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.checked = false;
     }
 
     editTitle (newTitle) {
@@ -22,5 +23,9 @@ class TodoItem {
 
     editPriority (newPriority) {
         this.priority = newPriority;
+    }
+    
+    check () {
+        this.checked = true;
     }
 }
