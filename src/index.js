@@ -1,16 +1,21 @@
 import "./style.css";
 import { TodoItem } from "./todo.js";
 import { Project } from "./projects.js";
+import { Workspace } from "./workspace.js";
 
 
-const test = new TodoItem('test', 'todo pour testeer', '20-03-2025', 1);
-const project = new Project('Default Project');
+const testTodo = new TodoItem('test', 'todo pour testeer', '20-03-2025', 1);
+const testTodo2 = new TodoItem('test2', 'todo pour testeer', '20-03-2025', 1);
+
+const defaultProject = new Project('Default Project');
+const workspace = new Workspace('Default Workspace');
+
+workspace.addProject(defaultProject)
+defaultProject.addTodoItem(testTodo);
+defaultProject.addTodoItem(testTodo2);
 
 
+defaultProject.removeTodo(testTodo2);
 
-test.title = 'yooooo';
-
-project.addTodoItem(test);
-
-console.log(project);
+console.log(defaultProject);
 
