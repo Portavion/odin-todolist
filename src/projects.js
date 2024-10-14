@@ -17,4 +17,8 @@ class Project {
         }
     }
 
+    listTodos (){
+        return this.todoItems;
+    }
+
 }

@@ -9,4 +9,8 @@ class Workspace {
     addProject (newProject) {
         this.projects.push(newProject);
     }
+
+    listProjects () {
+        return this.projects;
+    }
 }

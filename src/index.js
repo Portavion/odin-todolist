@@ -15,7 +15,8 @@ defaultProject.addTodoItem(testTodo);
 defaultProject.addTodoItem(testTodo2);
 
 
-defaultProject.removeTodo(testTodo2);
+//defaultProject.removeTodo(testTodo2);
 
-console.log(defaultProject);
+console.log(workspace.listProjects());
+console.log(defaultProject.listTodos());
 
