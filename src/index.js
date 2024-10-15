@@ -6,7 +6,9 @@ import { UIController } from "./ui.js";
 
 
 const testTodo = new TodoItem('test', 'todo pour testeer', '20-03-2025', 1);
-const testTodo2 = new TodoItem('test2', 'todo pour testeer', '20-03-2025', 1);
+const testTodo2 = new TodoItem('test2', 'todo pour testeer', '20-03-2025', 2);
+
+testTodo2.check();
 
 const defaultProject = new Project('Default Project');
 const project1 = new Project('Project 1');
@@ -22,10 +24,10 @@ workspace.addProject(project2);
 defaultProject.addTodoItem(testTodo);
 defaultProject.addTodoItem(testTodo2);
 
+
 //defaultProject.removeTodo(testTodo2);
 
-console.log(workspace.listProjects());
-// console.log(defaultProject.listTodos());
 
 UIController.displayProjects(workspace.listProjects());
+UIController.displayTodos(defaultProject);
 
