@@ -21,6 +21,14 @@ nav {
     padding-left: 20px;
 }
 
+.my-projects > ul :hover{
+    list-style: none;
+    font-weight: 500;
+    padding-left: 20px;
+    cursor: pointer;
+    background-color: antiquewhite;
+}
+
 .my-projects {
     font-weight: 500;
 }
@@ -36,7 +44,14 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-bottom: 50px;
+    padding-bottom: 50px;;
+}
+
+.sections > div:hover {
+    font-weight: 500;
+    cursor: pointer;
+    background-color: antiquewhite;
+
 }
 
 .todo {

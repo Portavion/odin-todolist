@@ -5,8 +5,8 @@ import { Workspace } from "./workspace.js";
 import { UIController } from "./ui.js";
 
 
-const testTodo = new TodoItem('test', 'todo pour testeer', '20-03-2025', 1);
-const testTodo2 = new TodoItem('test2', 'todo pour testeer', '20-03-2025', 2);
+const testTodo = new TodoItem('test', 'todo pour testeer', '2025-03-20', 1);
+const testTodo2 = new TodoItem('dueToday', 'todo pour testeer', '2024-10-16', 2);
 
 testTodo2.check();
 
@@ -34,6 +34,11 @@ document.getElementById('submit-button').addEventListener('click', () => {
     document.querySelector('dialog').close();
 
     submitTodo();
+});
+
+const todayButton = document.querySelector('.today');
+todayButton.addEventListener('click', () => {
+    UIController.displayToday(workspace.listProjects());
 });
 
 function submitTodo () {

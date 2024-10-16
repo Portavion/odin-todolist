@@ -69,4 +69,64 @@ const UIController = new class {
 
         projectContainer.appendChild(projectListContainer);
     }
+
+    displayToday (projectList) {
+        const todoContainer = document.querySelector('.todo-container');
+        todoContainer.innerHTML = '';
+        const projectNameDiv = document.createElement('div')
+        const todoListContainer = document.createElement('ul');
+
+        const todayDate = new Date().toISOString().split('T')[0];
+        const todoDueTodayArray = [];
+
+        for(let projectID in projectList){
+            let todoArray = projectList[projectID].listTodos();
+            
+            console.log(todoArray);
+
+
+            for(let todoID in todoArray){
+                let todoIteration = todoArray[todoID];
+                console.log(todoIteration.dueDate);
+                console.log(todayDate);
+                if(todoIteration.dueDate === todayDate){
+                    todoDueTodayArray.push(todoIteration);
+                }
+            }
+        }
+
+        projectNameDiv.textContent = 'Today';
+        projectNameDiv.className = 'project-name';
+        todoListContainer.className = 'list-todo';
+        todoContainer.appendChild(projectNameDiv);
+
+        for (let todoId in todoDueTodayArray) {
+            let newListItem = document.createElement('li');
+            newListItem.className = 'todo';
+
+            let newCheckbox = document.createElement('input');
+            newCheckbox.setAttribute('type', 'checkbox');
+            newCheckbox.name = 'check';
+            newCheckbox.checked = todoDueTodayArray[todoId].checked;
+
+            let titleDiv = document.createElement('div');
+            titleDiv.appendChild(document.createTextNode(todoDueTodayArray[todoId].title));
+
+            let priorityDiv = document.createElement('div');
+            priorityDiv.appendChild(document.createTextNode('p' + todoDueTodayArray[todoId].priority));
+
+            let dueDateDiv = document.createElement('div');
+            dueDateDiv.appendChild(document.createTextNode(todoDueTodayArray[todoId].dueDate));
+
+
+            newListItem.appendChild(newCheckbox); 
+            newListItem.appendChild(titleDiv);
+            newListItem.appendChild(priorityDiv);
+            newListItem.appendChild(dueDateDiv);
+
+            todoListContainer.appendChild(newListItem);
+        }
+
+        todoContainer.appendChild(todoListContainer);
+    }
 }
