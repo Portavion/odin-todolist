@@ -11,23 +11,21 @@ const testTodo2 = new TodoItem('dueToday', 'todo pour testeer', '2024-10-16', 2)
 testTodo2.check();
 
 const defaultProject = new Project('Default Project');
-const project1 = new Project('Project 1');
-const project2 = new Project('Project 2');
 
 const workspace = new Workspace('Default Workspace');
 
 workspace.addProject(defaultProject)
-workspace.addProject(project1);
-workspace.addProject(project2);
 
-
-defaultProject.addTodoItem(testTodo);
-defaultProject.addTodoItem(testTodo2);
+//defaultProject.addTodoItem(testTodo);
+//defaultProject.addTodoItem(testTodo2);
 
 UIController.displayProjects(workspace.listProjects());
 UIController.displayTodos(defaultProject);
 
 createTodoForm(workspace);
+let loadedDefault = JSON.parse(localStorage.getItem('defaultProject'));
+
+console.log(loadedDefault.todoItems);
 
 document.getElementById('submit-button').addEventListener('click', () => {
     event.preventDefault();
@@ -61,10 +59,8 @@ function submitTodo () {
         }
     }
 
-
-
-
     defaultProject.addTodoItem(newTodo);
+    localStorage.setItem('defaultProject', JSON.stringify(defaultProject));
 }
 
 function createTodoForm(workspace){
@@ -97,5 +93,12 @@ function createTodoForm(workspace){
     document.getElementById('closeDialog').addEventListener('click', () => {
         document.querySelector('dialog').close();
     });
+}
+
+function loadProject (retrievedProject){
+
+    for (let todoID in retrievedProject){
+        defaultProject.addTodoItem(retrievedProject.todoItems[todoID]);
+    }
 }
 

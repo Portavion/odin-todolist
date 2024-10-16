@@ -81,14 +81,8 @@ const UIController = new class {
 
         for(let projectID in projectList){
             let todoArray = projectList[projectID].listTodos();
-            
-            console.log(todoArray);
-
-
             for(let todoID in todoArray){
                 let todoIteration = todoArray[todoID];
-                console.log(todoIteration.dueDate);
-                console.log(todayDate);
                 if(todoIteration.dueDate === todayDate){
                     todoDueTodayArray.push(todoIteration);
                 }
