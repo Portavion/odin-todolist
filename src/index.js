@@ -24,8 +24,7 @@ UIController.displayTodos(defaultProject);
 
 createTodoForm(workspace);
 let loadedDefault = JSON.parse(localStorage.getItem('defaultProject'));
-
-console.log(loadedDefault.todoItems);
+loadProject(loadedDefault);
 
 document.getElementById('submit-button').addEventListener('click', () => {
     event.preventDefault();
@@ -96,8 +95,7 @@ function createTodoForm(workspace){
 }
 
 function loadProject (retrievedProject){
-
-    for (let todoID in retrievedProject){
+    for (let todoID in retrievedProject.todoItems){
         defaultProject.addTodoItem(retrievedProject.todoItems[todoID]);
     }
 }

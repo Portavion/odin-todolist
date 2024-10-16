@@ -37,11 +37,21 @@ const UIController = new class {
             let dueDateDiv = document.createElement('div');
             dueDateDiv.appendChild(document.createTextNode(todoArray[todoId].dueDate));
 
+            let deleteDiv = document.createElement('div');
+            deleteDiv.appendChild(document.createTextNode('Delete'));
+
+            deleteDiv.addEventListener('click', () => {
+                project.removeTodo(todoArray[todoId]);
+            localStorage.setItem('defaultProject', JSON.stringify(project));
+
+            });
+
 
             newListItem.appendChild(newCheckbox); 
             newListItem.appendChild(titleDiv);
             newListItem.appendChild(priorityDiv);
             newListItem.appendChild(dueDateDiv);
+            newListItem.appendChild(deleteDiv);
 
             todoListContainer.appendChild(newListItem);
         }
