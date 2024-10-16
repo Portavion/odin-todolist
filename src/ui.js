@@ -1,3 +1,6 @@
+import { TodoItem } from "./todo";
+import { Workspace } from "./workspace";
+
 export { UIController };
 
 const UIController = new class {
