@@ -42,7 +42,9 @@ const UIController = new class {
 
             deleteDiv.addEventListener('click', () => {
                 project.removeTodo(todoArray[todoId]);
-            localStorage.setItem('defaultProject', JSON.stringify(project));
+                localStorage.setItem('defaultProject', JSON.stringify(project));
+                const taskContainer = deleteDiv.parentElement;
+                taskContainer.innerHTML = '';
 
             });
 
